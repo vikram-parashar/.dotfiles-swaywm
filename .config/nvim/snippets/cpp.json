@@ -1,0 +1,27 @@
+{
+  "Boilerplate for competetive programming": {
+    "prefix": "boilerplate",
+    "body": [
+      "#include <bits/stdc++.h>",
+      "using namespace std;",
+      "#define all(x) (x).begin(), (x).end()",
+      "#define ll long long",
+      "#define rep(i,a,b) for(int i=a;i<b;++i)",
+      "",
+      "void do_it() { ",
+      "  int ${2:x};",
+      "  cout << \"\\n\"; ",
+      "}",
+      "",
+      "int main() {",
+      "  ios_base::sync_with_stdio(false);",
+      "  cin.tie(NULL);",
+      "  ${1://}int t;cin >> t; while (t--)",
+      "    do_it();",
+      "  return 0;",
+      "}",
+      ""
+    ],
+    "description": "Boilerplate for competetive programming"
+  }
+}

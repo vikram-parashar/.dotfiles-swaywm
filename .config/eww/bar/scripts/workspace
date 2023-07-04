@@ -1,0 +1,59 @@
+#!/bin/sh
+workspaces() {
+
+ws1="1"
+ws2="2"
+ws3="3"
+ws4="4"
+ws5="5"
+ws6="6"
+ws7="7"
+
+# Unoccupied
+un="0"
+
+# check if Occupied
+o1=$(swaymsg -p -t get_workspaces | grep "Workspace 1"| awk '{print($2)}')
+o2=$(swaymsg -p -t get_workspaces | grep "Workspace 2"| awk '{print($2)}')
+o3=$(swaymsg -p -t get_workspaces | grep "Workspace 3"| awk '{print($2)}')
+o4=$(swaymsg -p -t get_workspaces | grep "Workspace 4"| awk '{print($2)}')
+o5=$(swaymsg -p -t get_workspaces | grep "Workspace 5"| awk '{print($2)}')
+o6=$(swaymsg -p -t get_workspaces | grep "Workspace 6"| awk '{print($2)}')
+o7=$(swaymsg -p -t get_workspaces | grep "Workspace 7"| awk '{print($2)}')
+
+# check if Focused
+f1=$(swaymsg -p -t get_workspaces | grep "Workspace 1" | grep "focused"| awk '{print($2)}')
+f2=$(swaymsg -p -t get_workspaces | grep "Workspace 2" | grep "focused"| awk '{print($2)}')
+f3=$(swaymsg -p -t get_workspaces | grep "Workspace 3" | grep "focused"| awk '{print($2)}')
+f4=$(swaymsg -p -t get_workspaces | grep "Workspace 4" | grep "focused"| awk '{print($2)}')
+f5=$(swaymsg -p -t get_workspaces | grep "Workspace 5" | grep "focused"| awk '{print($2)}')
+f6=$(swaymsg -p -t get_workspaces | grep "Workspace 6" | grep "focused"| awk '{print($2)}')
+f7=$(swaymsg -p -t get_workspaces | grep "Workspace 7" | grep "focused"| awk '{print($2)}')
+
+ic_1=""
+ic_2=""
+ic_3=""
+ic_4=""
+ic_5=""
+ic_6=""
+
+if [ $f1 ]; then
+    ic_1=""
+elif [ $f2 ]; then
+    ic_2=""
+elif [ $f3 ]; then
+    ic_3=""
+elif [ $f4 ]; then
+    ic_4=""
+elif [ $f5 ]; then
+    ic_5=""
+elif [ $f6 ]; then
+    ic_6=""
+fi
+echo 	"(box	:class \"works\"	:orientation \"h\" :spacing 5 :space-evenly \"false\" (button :onclick \"sway workspace number $ws1\"	:class	\"$un$o1$f1 arch-icon\"	\"$ic_1\") (button :onclick \"sway workspace number $ws2\"	:class \"$un$o2$f2 firefox-icon\"	 \"$ic_2\") (button :onclick \"sway workspace number $ws3\"	:class \"$un$o3$f3 code-icon\" \"$ic_3\") (button :onclick \"sway workspace number $ws4\"	:class \"$un$o4$f4 folder-icon\"	\"$ic_4\") (button :onclick \"sway workspace number $ws5\"	:class \"$un$o5$f5 spotify-icon\" \"$ic_5\")  (button :onclick \"sway workspace number $ws6\"	:class \"$un$o6$f6 whatsapp-icon\" \"$ic_6\")(button :onclick \"sway workspace number $ws7\"	:class \"$un$o7$f7\" \"$ic_7\"))"
+
+}
+workspaces
+swaymsg -t subscribe -m '["workspace"]'| while read -r _ ; do
+workspaces
+done
