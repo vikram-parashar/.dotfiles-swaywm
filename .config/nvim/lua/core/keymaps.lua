@@ -2,8 +2,25 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap
 
---@genral keymaps
+----------------------
+-- insert mode binds
+----------------------
+-- exit insert mode
 keymap.set("i", "jk", "<ESC>")
+
+-- go to  beginning and end
+keymap.set("i", "<C-b>", "<ESC>^i")
+keymap.set("i", "<C-e>", "<End>")
+
+-- navigate within insert mode
+keymap.set("i", "<C-h>", "<Left>")
+keymap.set("i", "<C-l>", "<Right>")
+keymap.set("i", "<C-j>", "<Down>")
+keymap.set("i", "<C-k>", "<Up>")
+
+----------------------
+-- genral keymaps
+----------------------
 keymap.set("n", "<leader><leader>", ":colorscheme pywal<CR>:source ~/.config/nvim/lua/core/colorscheme.lua<CR>")
 
 keymap.set("n", "ff", ":lua vim.lsp.buf.format()<CR><ESC>")
@@ -21,6 +38,11 @@ keymap.set("n", "<leader>bx", ":close<CR>") --close buffer
 
 keymap.set("n", "<Tab>", ":bnext<CR>") --next buffer
 keymap.set("n", "<S-Tab>", ":bprevious<CR>") --previous buffer
+
+--copy all
+keymap.set("n", "<C-c>", ":%y+ <CR>")
+--select all
+keymap.set("n", "<C-v>", "ggvG")
 
 ----------------------
 -- Plugin Keybinds
@@ -40,10 +62,15 @@ keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
 
 -- telescope git commands
-keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
-keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
-keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
-keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
+keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) keymap.set("i", "gc" for git commits]
+keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) keymap.set("i", "gfc" for git file commits]
+keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) keymap.set("i", "gb" for git branch]
+keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview keymap.set("i", "gs" for git status]
 
 -- restart lsp server
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
+
+--float terminal
+keymap.set("n", "<leader>t", ":FloatermNew<CR>")
+keymap.set("n", "<A-t>", ":FloatermToggle<CR>")
+keymap.set("n", "<C-TAB>", ":FloatermNext<CR>")

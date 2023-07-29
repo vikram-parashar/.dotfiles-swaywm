@@ -67,6 +67,7 @@ return packer.startup(function(use)
 	-- snippets
 	use("L3MON4D3/LuaSnip") -- snippet engine
 	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
+	use("rafamadriz/friendly-snippets")
 
 	-- managing & installing lsp servers, linters & formatters
 	use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
@@ -122,6 +123,9 @@ return packer.startup(function(use)
 	})
 	--code runner
 	use("CRAG666/code_runner.nvim")
+
+	--floating terminal
+	use("voldikss/vim-floaterm")
 
 	if packer_bootstrap then
 		require("packer").sync()
