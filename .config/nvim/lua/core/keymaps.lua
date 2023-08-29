@@ -33,8 +33,7 @@ keymap.set("n", ";", ":")
 keymap.set("n", "<leader>sb", "<C-w>v") --split window vertically
 keymap.set("n", "<leader>sv", "<C-w>s") --split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=") --make split window equal size
-keymap.set("n", "<leader>x", ":close<CR>") --close split window
-keymap.set("n", "<leader>bx", ":close<CR>") --close buffer
+keymap.set("n", "<leader>x", ":bd<CR>") --close split window
 
 keymap.set("n", "<Tab>", ":bnext<CR>") --next buffer
 keymap.set("n", "<S-Tab>", ":bprevious<CR>") --previous buffer
@@ -71,6 +70,6 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current c
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
 
 --float terminal
-keymap.set("n", "<leader>t", ":FloatermNew<CR>")
-keymap.set("n", "<A-t>", ":FloatermToggle<CR>")
-keymap.set("n", "<C-TAB>", ":FloatermNext<CR>")
+keymap.set("n", "<leader>i", ":FloatermNew<CR>")
+keymap.set({ "n", "t" }, "<A-i>", "<C-\\><C-n>:FloatermToggle<CR>")
+keymap.set("n", "<C-i>", ":FloatermNext<CR>")
